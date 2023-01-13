@@ -17,7 +17,7 @@ DISCLAIMER_OS() {
 }
 
 DEBIAN_DOCKER(){
-    if [ -z != $(which docker) ];then 
+    if [ -z $(which docker) ];then 
         echo "Docker is not Installed"
         # updating the APT-GET and Installing required Packages
         apt-get update && \
@@ -47,8 +47,8 @@ DEBIAN_DOCKER(){
         echo "See the Docker Version Information Below"
         echo "Docker Version: `docker --version`"
     else 
-        echo Docker is installed on path: $(which docker)
-        echo "Docker Version is: $(docker version)"
+        echo "Docker is installed on path: `which docker`"
+        echo "Docker Version is: `docker version`"
     fi
 }
 
