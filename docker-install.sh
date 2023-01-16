@@ -38,6 +38,7 @@ DEBIAN_DOCKER(){
         ca-certificates \
         curl \
         gnupg \
+        git \
         lsb-release -y
 
         # Setting up the GPG key
@@ -78,7 +79,8 @@ UBUNTU_DOCKER(){
         ca-certificates \
         curl \
         gnupg \
-        lsb-release
+        git \
+        lsb-release -y
 
         # Setting up the GPG key
         sudo mkdir -p /etc/apt/keyrings
@@ -110,7 +112,7 @@ UBUNTU_DOCKER(){
 CENTOS_DOCKER(){
     if [ -z $(which docker) ];then 
         echo "Docker is not Installed"
-        sudo yum install -y yum-utils
+        sudo yum install -y yum-utils git
         sudo yum-config-manager \
             --add-repo \
             https://download.docker.com/linux/centos/docker-ce.repo
