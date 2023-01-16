@@ -3,8 +3,10 @@
 set -e
 #set -x
 
-OS=`cat /etc/os-release | grep ^ID | head -n 1 | cut -d "=" -f2`
+OS=`cat /etc/os-release | grep ^ID | head -n 1 | cut -d "=" -f2 | tr -d '"'`
 VERSION=`cat /etc/os-release | grep ^VERSION_ID | head -n 1 | cut -d '"' -f2`
+VERSION_CODENAME=`cat /etc/os-release | grep ^VERSION_CODENAME | head -n 1 | cut -d '=' -f2`
+ID=`cat /etc/os-release | grep ^ID= | head -n 1 | cut -d '=' -f2 | tr -d '"'`
 
 DISCLAIMER_OS() {
     clear
@@ -128,7 +130,7 @@ echo "Checking OS for Installation"
 
 case $OS in
   debian)
-    if [ "$VERSION" == "11" ];then
+    if [ "$VERSION" == "11" ] && [ "$VERSION_CODENAME" == "bullseye" ];then
         echo "OS: $OS"
         echo "Version: $VERSION"    
         clear
@@ -140,7 +142,7 @@ case $OS in
     ;;
 
   ubuntu)
-    if [ "$VERSION" == "20.04" ];then
+    if [ "$VERSION" == "20.04" ] && [ "$VERSION_CODENAME" == "focal" ];then
         echo -n "OS: $OS"
         echo -n "Version: $VERSION"
         clear
@@ -152,7 +154,7 @@ case $OS in
     ;;
 
   centos)
-    if [ "$VERSION" == "7" ];then
+    if [ "$VERSION" == "7" ] && [ "$ID" == "centos" ];then
         echo -n "OS: $OS"
         echo -n "Version: $VERSION"
         clear
