@@ -13,7 +13,8 @@ DISCLAIMER_OS() {
     echo "======================================================================"
     echo "Unknown OS release This script is only compatible with below list OS"
     echo "========= 1) Debian-11 Bullseye ========="
-    echo "========= 2) Ubuntu-20.04 ========="
+    echo "========= 2) Ubuntu-20.04 Focal ========="
+    echo "========= 3) CentOS-7 ========="
     echo "======================================================================"
     exit 1
 }
