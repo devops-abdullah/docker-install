@@ -4,4 +4,4 @@
 
 # gluster-install
 
-`bash <(curl -s https://raw.githubusercontent.com/devops-abdullah/docker-install/main/gluster-install.sh)`
+`bash <(curl -s https://raw.githubusercontent.com/devops-abdullah/docker-install/main/glusterfs-install.sh)`
