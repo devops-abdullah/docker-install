@@ -6,6 +6,10 @@ OR
 ## On Centos
 `yum install curl -y`
 
+# Install All
+
+`bash <(curl -s https://raw.githubusercontent.com/devops-abdullah/docker-install/main/install-all.sh)`
+
 # docker-install
 
 `bash <(curl -s https://raw.githubusercontent.com/devops-abdullah/docker-install/main/docker-install.sh)`
