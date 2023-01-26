@@ -14,7 +14,7 @@ DISCLAIMER_OS() {
     echo "Unknown OS release This script is only compatible with below list OS"
     echo "========= 1) Debian-11 Bullseye ========="
     echo "========= 2) Ubuntu-20.04 Focal ========="
-    # echo "========= 3) CentOS-7 ========="
+    echo "========= 3) CentOS-7 ========="
     echo "======================================================================"
     exit 1
 }
@@ -68,7 +68,9 @@ UBUNTU_GLUSTERFS(){
 CENTOS_GLUSTERFS(){
     if [ -z $(which gluster) ];then 
         echo "Gluster is not Installed"
-
+        yum install centos-release-gluster9.noarch -y && \
+        yum install glusterfs gluster-cli glusterfs-libs glusterfs-server fuse -y
+        systemctl enable --now glusterd
         clear
         echo "All Done Gluster has been installed on OS: $OS - $VERSION"
         echo "See the Gluster Version Information Below"
@@ -106,17 +108,17 @@ case $OS in
     fi
     ;;
 
-#   centos)
-#     if [ "$VERSION" == "7" ] && [ "$ID" == "centos" ];then
-#         echo -n "OS: $OS"
-#         echo -n "Version: $VERSION"
-#         clear
-#         echo "Good to go for Installation of Docker on this System....!"
-#         CENTOS_GLUSTERFS
-#     else
-#         DISCLAIMER_OS
-#     fi
-#     ;;
+  centos)
+    if [ "$VERSION" == "7" ] && [ "$ID" == "centos" ];then
+        echo -n "OS: $OS"
+        echo -n "Version: $VERSION"
+        clear
+        echo "Good to go for Installation of Gluster on this System....!"
+        CENTOS_GLUSTERFS
+    else
+        DISCLAIMER_OS
+    fi
+    ;;
 
   *)
     DISCLAIMER_OS
