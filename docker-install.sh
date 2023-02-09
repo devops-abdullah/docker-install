@@ -116,7 +116,7 @@ CENTOS_DOCKER(){
         sudo yum-config-manager \
             --add-repo \
             https://download.docker.com/linux/centos/docker-ce.repo
-        sudo yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+        sudo yum install -y docker-ce-23.0.0 docker-ce-cli-23.0.0 containerd.io-1.6.16 docker-compose-plugin-2.15.1
         sudo systemctl enable docker
         sudo systemctl start docker
         clear
