@@ -97,7 +97,7 @@ UBUNTU_DOCKER(){
         #### sudo apt-get update
         
         # Installing Docker and Docker Compose for 
-        sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+        sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
         
         clear
         echo "All Done Docker has been installed on OS: $OS - $VERSION"
@@ -146,6 +146,20 @@ case $OS in
 
   ubuntu)
     if [ "$VERSION" == "20.04" ] && [ "$VERSION_CODENAME" == "focal" ];then
+        echo -n "OS: $OS"
+        echo -n "Version: $VERSION"
+        clear
+        echo "Good to go for Installation of Docker on this System....!"
+        UBUNTU_DOCKER
+    
+    elif [ "$VERSION" == "22.04" ] && [ "$VERSION_CODENAME" == "jammy" ];then
+        echo -n "OS: $OS"
+        echo -n "Version: $VERSION"
+        clear
+        echo "Good to go for Installation of Docker on this System....!"
+        UBUNTU_DOCKER
+
+    elif [ "$VERSION" == "22.10" ] && [ "$VERSION_CODENAME" == "Kinetic" ];then
         echo -n "OS: $OS"
         echo -n "Version: $VERSION"
         clear
