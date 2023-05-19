@@ -59,7 +59,7 @@ DEBIAN_DOCKER(){
         #### sudo apt-get update
         
         # Installing Docker and Docker Compose for 
-        sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+        sudo apt-get install -y docker-ce-23.0.0 docker-ce-cli-23.0.0 containerd.io-1.6.16 docker-compose-plugin-2.15.1
         
         clear
         echo "All Done Docker has been installed on OS: $OS - $VERSION"
@@ -99,7 +99,7 @@ UBUNTU_DOCKER(){
         #### sudo apt-get update
         
         # Installing Docker and Docker Compose for 
-        sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+        sudo apt-get install -y docker-ce-23.0.0 docker-ce-cli-23.0.0 containerd.io-1.6.16 docker-compose-plugin-2.15.1
         
         clear
         echo "All Done Docker has been installed on OS: $OS - $VERSION"
