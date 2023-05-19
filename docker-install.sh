@@ -59,7 +59,7 @@ DEBIAN_DOCKER(){
         #### sudo apt-get update
         
         # Installing Docker and Docker Compose for 
-        sudo apt-get install -y docker-ce-23.0.0 docker-ce-cli-23.0.0 containerd.io-1.6.16 docker-compose-plugin-2.15.1
+        sudo apt-get install -y 23.0.0-1~debian.11~bullseye 23.0.0-1~debian.11~bullseye containerd.io-1.6.16-1 docker-compose-plugin-2.15.1-1~debian.11~bullseye
         
         clear
         echo "All Done Docker has been installed on OS: $OS - $VERSION"
