@@ -21,14 +21,12 @@ DISCLAIMER_OS() {
     exit 1
 }
 
-
 SUDO() {
     echo "Checking Sudo Command"
     if [ -z $(which sudo)];then
         apt-get update && apt-get install sudo -y
     fi
 }
-
 
 DEBIAN_DOCKER(){
     SUDO
@@ -59,7 +57,7 @@ DEBIAN_DOCKER(){
         #### sudo apt-get update
         
         # Installing Docker and Docker Compose for 
-        sudo apt-get install -y docker-ce-5:23.0.0-1~debian.11~bullseye docker-ce-cli-5:23.0.0-1~debian.11~bullseye containerd.io-1.6.16-1 docker-compose-plugin-2.15.1-1~debian.11~bullseye
+        sudo apt-get install -y docker-ce=5:23.0.0-1~debian.11~bullseye docker-ce-cli=5:23.0.0-1~debian.11~bullseye containerd.io=1.6.16-1 docker-compose-plugin=2.15.1-1~debian.11~bullseye
         
         clear
         echo "All Done Docker has been installed on OS: $OS - $VERSION"
@@ -99,7 +97,20 @@ UBUNTU_DOCKER(){
         #### sudo apt-get update
         
         # Installing Docker and Docker Compose for 
-        sudo apt-get install -y docker-ce-23.0.0 docker-ce-cli-23.0.0 containerd.io-1.6.16 docker-compose-plugin-2.15.1
+        # To install the requried version use the following commands:
+        ## apt-cache madison docker-ce | awk '{ print $3 }'
+        ## apt-cache madison docker-compose-plugin | awk '{ print $3 }'
+        ## apt-cache madison contaienr.io | awk '{ print $3 }'
+        
+        # Set version as veriable
+        # VERSION_STRING=5:23.0.5-1~ubuntu.22.04~jammy
+        # install package with below command ==>
+        # sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING
+        # sudo apt-get install containerd.io=$VERSION_STRING
+        # # sudo apt-get install docker-compose-plugin=$VERSION_STRING
+        
+        ### Below commad will install the latest version of docker-ce, docker-ce-cli, docker-compose-plugin and container.io
+        sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
         
         clear
         echo "All Done Docker has been installed on OS: $OS - $VERSION"
