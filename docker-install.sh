@@ -17,6 +17,7 @@ DISCLAIMER_OS() {
     echo "========= 3) Ubuntu-22.04 Jammy ========="
     echo "========= 4) Ubuntu-22.10 Kinetic ========="
     echo "========= 5) CentOS-7 ========="
+    echo "========= 6) Debian-12 bookworm ========="
     echo "======================================================================"
     exit 1
 }
@@ -147,6 +148,12 @@ echo "Checking OS for Installation"
 case $OS in
   debian)
     if [ "$VERSION" == "11" ] && [ "$VERSION_CODENAME" == "bullseye" ];then
+        echo "OS: $OS"
+        echo "Version: $VERSION"    
+        clear
+        echo "Good to go for Installation of Docker on this System....!"
+        DEBIAN_DOCKER
+    elif [ "$VERSION" == "12" ] && [ "$VERSION_CODENAME" == "bookworm" ];then
         echo "OS: $OS"
         echo "Version: $VERSION"    
         clear
