@@ -70,6 +70,47 @@ DEBIAN_DOCKER(){
     fi
 }
 
+DEBIAN_12_DOCKER(){
+    SUDO
+    if [ -z $(which docker) ];then 
+        echo "Docker is not Installed"
+        # updating the APT-GET and Installing required Packages
+        sudo apt-get update && \
+        sudo apt-get install \
+        ca-certificates \
+        curl \
+        gnupg \
+        git \
+        lsb-release -y
+
+        # Setting up the GPG key
+        sudo mkdir -p /etc/apt/keyrings
+        curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+        # Setting up the repo for Docker CE Stable Latest release
+        echo \
+        "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+        $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+        # Updating the Repo Data
+        sudo apt-get update
+        ################## incase of Error during apt-get update 
+        #### sudo chmod a+r /etc/apt/keyrings/docker.gpg
+        #### sudo apt-get update
+        
+        # Installing Docker and Docker Compose for 
+        sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+        
+        clear
+        echo "All Done Docker has been installed on OS: $OS - $VERSION"
+        echo "See the Docker Version Information Below"
+        echo "Docker Version: `docker --version`"
+    else 
+        echo "Docker is installed on path: `which docker`"
+        echo "Docker Version is: `docker version`"
+    fi
+}
+
 UBUNTU_DOCKER(){
     SUDO
     if [ -z $(which docker) ];then 
@@ -158,7 +199,7 @@ case $OS in
         echo "Version: $VERSION"    
         clear
         echo "Good to go for Installation of Docker on this System....!"
-        DEBIAN_DOCKER
+        DEBIAN_12_DOCKER
     else
         DISCLAIMER_OS
     fi
