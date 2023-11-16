@@ -59,6 +59,12 @@ DEBIAN_DOCKER(){
         
         # Installing Docker and Docker Compose for 
         sudo apt-get install -y docker-ce=5:23.0.0-1~debian.11~bullseye docker-ce-cli=5:23.0.0-1~debian.11~bullseye containerd.io=1.6.16-1 docker-compose-plugin=2.15.1-1~debian.11~bullseye
+        echo "Marking the Docker Version as hold to avoid accidentally update/upgrade"
+        sudo apt-mark hold docker-ce docker-ce-cli containerd.io docker-compose-plugin
+        # To Display the Hold Packages on System:
+        # => apt-mark showhold
+        # To unhold the hold packages for upgrade
+        # => apt-mark unhold docker-ce docker-ce-cli containerd.io docker-compose-plugin
         
         clear
         echo "All Done Docker has been installed on OS: $OS - $VERSION"
@@ -100,6 +106,12 @@ DEBIAN_12_DOCKER(){
         
         # Installing Docker and Docker Compose for 
         sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+        echo "Marking the Docker Version as hold to avoid accidentally update/upgrade"
+        sudo apt-mark hold docker-ce docker-ce-cli containerd.io docker-compose-plugin
+        # To Display the Hold Packages on System:
+        # => apt-mark showhold
+        # To unhold the hold packages for upgrade
+        # => apt-mark unhold docker-ce docker-ce-cli containerd.io docker-compose-plugin
         
         clear
         echo "All Done Docker has been installed on OS: $OS - $VERSION"
@@ -153,6 +165,12 @@ UBUNTU_DOCKER(){
         
         ### Below commad will install the latest version of docker-ce, docker-ce-cli, docker-compose-plugin and container.io
         sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+        echo "Marking the Docker Version as hold to avoid accidentally update/upgrade"
+        sudo apt-mark hold docker-ce docker-ce-cli containerd.io docker-compose-plugin
+        # To Display the Hold Packages on System:
+        # => apt-mark showhold
+        # To unhold the hold packages for upgrade
+        # => apt-mark unhold docker-ce docker-ce-cli containerd.io docker-compose-plugin
         
         clear
         echo "All Done Docker has been installed on OS: $OS - $VERSION"
