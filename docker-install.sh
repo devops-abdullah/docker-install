@@ -18,6 +18,7 @@ DISCLAIMER_OS() {
     echo "========= 4) Ubuntu-22.10 Kinetic ========="
     echo "========= 5) CentOS-7 ========="
     echo "========= 6) Debian-12 bookworm ========="
+    echo "========= 7) Oracle Linux 9.4"
     echo "======================================================================"
     exit 1
 }
@@ -202,6 +203,25 @@ CENTOS_DOCKER(){
     fi
 }
 
+OL_DOCKER() {
+    if [ -z $(which docker) ];then 
+        echo "Docker is not Installed"
+        sudo yum install -y yum-utils git
+        sudo yum-config-manager \
+            --add-repo \
+            https://download.docker.com/linux/centos/docker-ce.repo
+        sudo yum install -y yum install docker-ce docker-ce-cli containerd.io
+        sudo systemctl enable docker
+        sudo systemctl start docker
+        clear
+        echo "All Done Docker has been installed on OS: $OS - $VERSION"
+        echo "See the Docker Version Information Below"
+        echo "Docker Version: `docker --version`"
+    else 
+        echo "Docker is installed on path: `sudo which docker`"
+        echo "Docker Version is: `sudo docker version`"
+    fi
+}
 echo "Checking OS for Installation"
 
 case $OS in
@@ -256,6 +276,18 @@ case $OS in
         clear
         echo "Good to go for Installation of Docker on this System....!"
         CENTOS_DOCKER
+    else
+        DISCLAIMER_OS
+    fi
+    ;;
+    
+  ol)
+    if [ "$VERSION" == "9.4" ] && [ "$ID" == "ol" ];then
+        echo -n "OS: $OS"
+        echo -n "Version: $VERSION"
+        clear
+        echo "Good to go for Installation of Docker on this System....!"
+        OL_DOCKER
     else
         DISCLAIMER_OS
     fi
