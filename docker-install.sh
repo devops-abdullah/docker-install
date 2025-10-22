@@ -18,7 +18,8 @@ DISCLAIMER_OS() {
     echo "========= 4) Ubuntu-22.10 Kinetic ========="
     echo "========= 5) CentOS-7 ========="
     echo "========= 6) Debian-12 bookworm ========="
-    echo "========= 7) Oracle Linux 9.4"
+    echo "========= 7) Oracle Linux 9.4 ========="
+    echo "========= 8) Debian-13 trixie ========="
     echo "======================================================================"
     exit 1
 }
@@ -234,6 +235,12 @@ case $OS in
         echo "Good to go for Installation of Docker on this System....!"
         DEBIAN_DOCKER
     elif [ "$VERSION" == "12" ] && [ "$VERSION_CODENAME" == "bookworm" ];then
+        echo "OS: $OS"
+        echo "Version: $VERSION"    
+        clear
+        echo "Good to go for Installation of Docker on this System....!"
+        DEBIAN_12_DOCKER
+    elif [ "$VERSION" == "13" ] && [ "$VERSION_CODENAME" == "trixie" ];then
         echo "OS: $OS"
         echo "Version: $VERSION"    
         clear
