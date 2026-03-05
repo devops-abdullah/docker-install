@@ -18,7 +18,7 @@ DISCLAIMER_OS() {
     echo "========= 4) Ubuntu-22.10 Kinetic ========="
     echo "========= 5) CentOS-7 ========="
     echo "========= 6) Debian-12 bookworm ========="
-    echo "========= 7) Oracle Linux 9.4 ========="
+    echo "========= 7) Oracle Linux 9.4 | 9.6 ========="
     echo "========= 8) Debian-13 trixie ========="
     echo "======================================================================"
     exit 1
@@ -290,7 +290,7 @@ case $OS in
     ;;
     
   ol)
-    if [ "$VERSION" == "9.4" ] && [ "$ID" == "ol" ];then
+    if [[ "$ID" == "ol" && ( "$VERSION" == "9.4" || "$VERSION" == "9.6" ) ]]; then
         echo -n "OS: $OS"
         echo -n "Version: $VERSION"
         clear
